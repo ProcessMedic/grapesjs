@@ -994,7 +994,7 @@ declare namespace grapesjs {
      * @param [opts.scroll] - Scroll canvas to the selected element
      */
     select(
-      el: Component | HTMLElement,
+      el?: Component | HTMLElement,
       opts?: {
         scroll?: boolean;
       }
@@ -1479,7 +1479,7 @@ declare namespace grapesjs {
      * const asset = assetManager.get('http://img.jpg');
      * assetManager.remove(asset);
      */
-    remove(): any;
+    remove(asset: any, opts?: Record<string, any>): any;
     /**
      * Store assets data to the selected storage
      * @example
@@ -4073,6 +4073,7 @@ declare namespace grapesjs {
   }
 
   interface Device extends Backbone.Model<DeviceOptions> {
+    id?: string,
     getName(): string;
     getWidthMedia(): string;
   }
@@ -4249,6 +4250,10 @@ declare namespace grapesjs {
      * Get all selectors
      */
     getAll(): any;
+
+    select(value: any): any;
+
+    getSelectedAll(): Selector[];
   }
 
   interface SelectorOptions {
